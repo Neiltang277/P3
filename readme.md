@@ -1,27 +1,36 @@
-# OpenStreetMap Project
-# Data Wrangling with MongoDB
-### TANG Haoxiang
+# OpenStreetMap Project : Data Wrangling with MongoDB
 
-**Map Area: San Francisco, United States**
+** Author: TANG Haoxiang**
 
-https://www.openstreetmap.org/relation/111968
-https://mapzen.com/data/metro-extracts/metro/san-francisco_california/
+** Date: 2017/09/30 **
 
-1. Problems Encountered in the Map
-    Over­abbreviated Street Names
-    Postal Codes
-2. Data Overview
-3. Additional Ideas
-    Contributor statistics and gamification suggestion
-    Additional data exploration using MongoDB
-    Conclusion
+---
 
-## 0. 明确项目目的
+> Map Area: San Francisco, United States**  
+> https://www.openstreetmap.org/relation/111968  
+> https://mapzen.com/data/metro-extracts/metro/san-francisco_california/
+
+## Syllabus
+
+1. Make goals
+2. Procedure of importing data
+3. Problems Encountered in the Map
+    - Over­abbreviated Street Names
+    - Postal Codes
+4. Data Overview
+5. Additional Ideas
+    - Contributor statistics and gamification suggestion
+    - Additional data exploration using MongoDB
+6. Conclusion
+
+---
+
+#### 1. 明确项目目的
 
 1) 将osm内数据进行筛选，清洗，最终导入到数据库内。
 
 
-## 1. Problems Encountered in the Map
+#### 1. Problems Encountered in the Map
 1. python2 和python3的语法差异
 1. dic.has_key()
 可以替换成 if key in distinct
@@ -72,7 +81,8 @@ relations: 关联区域
 }
 ```
 
-3. 录入过程中出现的问题
+#### 3. Problems Encountered in the Map
+
 1) name标签处理问题
 1) 英文名 多个, 用/粉哥
 2) 不同语种的名字
@@ -96,7 +106,7 @@ Santa Clara, CA
 <tag k="addr:state" v="ca" />
 
 
-2. Data Overview
+#### 4. Data Overview
 **File sizes**
 san-francisco_california.osm ...... 1.41 GB
 
@@ -104,22 +114,27 @@ san-francisco_california.osm ...... 1.41 GB
 ```
 > db.char.find().count()
 1555851
+
 ```
 ### Number of nodes
+
 ```
 > db.char.find({"type":"node"}).count()
 1471349
 ```
+
 ### Number of wayss
 ```
 > db.char.find({"type":"way"}).count()
 84502
 ```
+
 ### Number of unique users
 ```
 > db.char.distinct({"created.user"}).length
 336
 ```
+
 ### Top 1 contributing user
 ```
 > db.char.aggregate([{"$group":{"_id":"$created.user", "count":{"$sum":1}}},
@@ -127,13 +142,18 @@ san-francisco_california.osm ...... 1.41 GB
 [ { "_id" : "jumbanho", "count" : 823324 } ]
 ```
 
-3. Additional Ideas
+#### 5. Additional Ideas
 
 
-## Conclusion
+#### 6. Conclusion
 
 
 ---
-reference:
+## Reference:
 
-http://wiki.openstreetmap.org/wiki/Key:amenity
+2. **Mongodb documentation** : https://docs.mongodb.com/manual/reference/method/
+3. **Pymongo documentation** : http://api.mongodb.com/python/current/tutorial.html
+4. **Python documentation**: https://docs.python.org/3.6/contents.html
+5. **OpenStreetMap**: http://www.openstreetmap.org/#map=17/36.95186/-79.04773
+5. **Mapzen**: https://mapzen.com/data/metro-extracts/
+1. **OpenStreetMap Wiki** : http://wiki.openstreetmap.org/wiki/Key:amenity
