@@ -7,7 +7,7 @@ import xml.etree.ElementTree as ET  # Use cElementTree or lxml if too slow
 # SAMPLE_FILE = "data/san-francisco_california_sample.osm"
 OSM_FILE = "data/hangzhou_china.osm"  # Replace this with your osm file
 SAMPLE_FILE = "data/hangzhou_china_sample.osm"
-SAMPLE_SF_FILE = "data/san-francisco_california_sample.osm"
+# SAMPLE_SF_FILE = "data/san-francisco_california_sample.osm"
 
 k = 1000 # Parameter: take every k-th top level element
 
@@ -37,9 +37,9 @@ class MongoConnect(object):
     def count_unique_users(self):
         return self.db.sanfrancisco.distinct('created.user').length
 
-    def count_unique_users(self):
-        return self.db.sanfrancisco.aggregate([{"$group":{"_id":"$created.user", "count":{"$sum":1}}},
-        {"$sort":{"count":1}}, {"$limit":1}])
+    # def count_unique_users(self):
+    #     return self.db.sanfrancisco.aggregate([{"$group":{"_id":"$created.user", "count":{"$sum":1}}},
+    #     {"$sort":{"count":1}}, {"$limit":1}])
 
 
 
@@ -134,20 +134,20 @@ class GetSample(object):
 
 def main():
     # print('hello')
-    obj = MongoConnect()
-    rest  = obj.get_one()
+    # obj = MongoConnect()
+    # rest  = obj.get_one()
     # print(rest)
 
     getSample = GetSample()
 
-    # getSample.save_sample()
+    getSample.save_sample()
 
-    for i, element in enumerate(getSample.get_element(SAMPLE_SF_FILE)):
-        item = getSample.to_json(i, element)
-        # if i == 7:
-        obj.add_one(item)
-        # print('----')
-    print(obj.count_all())
+    # for i, element in enumerate(getSample.get_element(SAMPLE_SF_FILE)):
+    #     item = getSample.to_json(i, element)
+    #     # if i == 7:
+    #     obj.add_one(item)
+    #     # print('----')
+    # print(obj.count_all())
 
 
 

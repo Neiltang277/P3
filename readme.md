@@ -12,25 +12,40 @@
 
 ## Syllabus
 
-1. Make goals
-2. Procedure of importing data
-3. Problems Encountered in the Map
-    - Over­abbreviated Street Names
-    - Postal Codes
-4. Data Overview
-5. Additional Ideas
-    - Contributor statistics and gamification suggestion
-    - Additional data exploration using MongoDB
-6. Conclusion
+1. 制定目标
+2. 数据导入流程
+3. 遇到的问题
+    - Python2 和 Python3的语法差异
+    - 字典内部多层嵌套的操作
+    - 数据标签的含义理解
+    - 老版本数据的格式化
+4. 数据概览
+5. 补充问题分析
+    - 建筑类型概览
+    - 使用MongoDB操作的环节
+6. 结论
 
 ---
 
 #### 1. 明确项目目的
 
 1) 将osm内数据进行筛选，清洗，最终导入到数据库内。
+2) 根据已经导入的数据得到基本的数据仓库信息
+3）利用已经导入的数据，提出假设，并通过数据分析操作得出结论
+
+#### 2. 数据清洗，导入数据库流程
+
+1） 生成Sample数据，通过对抽样数据的样本观察，归纳数据集合的规律
+2） 尝试对当前样本数据进行操作，并将结果打印到控制台，观察抽样数据集合的筛选结果是否符合预期
+3） 控制台打印数据如通过验收，则将样本数据导入到数据库内
+4） 对数据的基本信息进行收集和整理，并尝试对样本数据库进行抽样检测
+5） 样本数据库的数据集验收通过后，将测试数据集删除，正式对目标数据集进行操作
+6） 对结果进行抽样检验，发现是否有数据库内数据是否存在问题你
+7） 利用数据库对提出的问题进行分析
 
 
-#### 1. Problems Encountered in the Map
+
+#### 3. Problems Encountered in the Map
 1. python2 和python3的语法差异
 1. dic.has_key()
 可以替换成 if key in distinct
